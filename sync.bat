@@ -22,7 +22,14 @@ if not exist ".gitignore" (
 
 git add -A
 git commit -m "wiki update %date% %time%"
-git push
+
+git push -u origin main
+if errorlevel 1 (
+  echo.
+  echo PUSH FAILED. Read the message above. Your changes are saved locally but NOT on GitHub.
+  pause
+  exit /b 1
+)
 
 echo.
 echo Done. Now press Sync on the GitHub repo inside the Claude project.
